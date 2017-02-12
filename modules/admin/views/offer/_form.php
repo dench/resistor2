@@ -15,7 +15,7 @@ use yii\widgets\Pjax;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $properties app\models\Property[] */
 
-$urlPjax = Url::to(['id' => Yii::$app->request->get('id')]);
+$urlPjax = Url::to([0 => null, 'id' => Yii::$app->request->get('id')]);
 
 $js = <<<JS
 $(document).on('click', '#property_add', function() {

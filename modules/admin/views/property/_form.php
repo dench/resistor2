@@ -17,7 +17,7 @@ use yii\widgets\Pjax;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $images app\models\Image */
 
-$urlPjax = Url::to(['pjax' => 1]);
+$urlPjax = Url::to([0 => null, 'pjax' => 1]);
 
 $js = <<<JS
 $('#property-object_id').change(function(){
