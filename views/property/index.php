@@ -172,7 +172,7 @@ yii\bootstrap\Modal::begin([
                                             <strong><?= $model->getAttributeLabel('bathroom') ?>:</strong>
                                             <?= $model->bathroom ?></li>
                                     <?php endif ?>
-                                    <?php if ($model->parking->name): ?>
+                                    <?php if ($model->parking_id): ?>
                                         <li class="col-lg-6">
                                             <i class="fa fa-fw fa-truck"></i>
                                             <strong><?= $model->getAttributeLabel('parking_id') ?>:</strong>
@@ -266,63 +266,26 @@ yii\bootstrap\Modal::begin([
                     </div>
                 </div>
             <?php endif ?>
-            <!--
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="tools">
-                        <a href="#link" class="btn btn-primary"><i class="fa fa-envelope"></i> Email to a friend</a>
-                        <a href="#link" class="btn btn-facebook"><i class="fa fa-facebook"></i> Share</a>
-                        <a href="#link" class="btn btn-twitter"><i class="fa fa-twitter"></i> Share</a>
-                        <a href="#link" class="btn btn-default"><i class="fa fa-bookmark"></i> Bookmark</a>
-                        <a href="#link" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                    </div>
-                </div>
-            </div>
-            -->
         </article>
     </div>
 </section>
 
 
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe.
-         It's a separate element as animating opacity is faster than rgba(). -->
     <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides.
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
         <div class="pswp__container">
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
         </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
-
             <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
                 <div class="pswp__counter"></div>
-
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
                 <button class="pswp__button pswp__button--share" title="Share"></button>
-
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
                     <div class="pswp__preloader__icn">
                         <div class="pswp__preloader__cut">
@@ -331,23 +294,16 @@ yii\bootstrap\Modal::begin([
                     </div>
                 </div>
             </div>
-
             <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                 <div class="pswp__share-tooltip"></div>
             </div>
-
             <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
             </button>
-
             <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
             </button>
-
             <div class="pswp__caption">
                 <div class="pswp__caption__center"></div>
             </div>
-
         </div>
-
     </div>
-
 </div>
