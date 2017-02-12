@@ -12,7 +12,7 @@ class PropertyController extends \yii\web\Controller
     {
         $model = Property::findOne($id);
 
-        if (!$model || $model->status != 1) {
+        if (!$model || $model->status_id != 1) {
             throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
         }
 
