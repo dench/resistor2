@@ -51,7 +51,7 @@ class UploadFiles extends Model
         $this->upload = [];
         
 		if ($this->validate()) {
-            
+
 			$date = new DateTime();
 			$path = $date->format('Y/m/d');
 
@@ -88,7 +88,7 @@ class UploadFiles extends Model
                     $image = new \app\models\Image();
                     $image->file_id = $f->id;
                     $image->name = $f->name;
-                    $img = \yii\imagine\Image::getImagine()->open($this->path . '/' .$path . '/' . $f->hash . '.' . $f->extension);
+                    $img = \yii\imagine\Image::getImagine()->open($this->path . '/' .$f->path . '/' . $f->hash . '.' . $f->extension);
                     $image->width = $img->getSize()->getWidth();
                     $image->height = $img->getSize()->getHeight();
                     $image->save();

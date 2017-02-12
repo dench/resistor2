@@ -64,7 +64,7 @@ class AjaxController extends Controller
                 foreach ($model->upload as $upload) {
                     $initialPreview[] = '<img src="' . ImageHelper::size($upload['image']->id, 'small') . '" alt="" width="100%"><input type="hidden" name="' . $name . '" value="' . $upload['image']->id . '">';
                     $initialPreviewConfig[] = [
-                        'url' => Url::to(['file-delete']),
+                        'url' => Url::to(['/ajax/file-delete']),
                         'key' => $upload['file']->id,
                     ];
                 }
@@ -82,6 +82,8 @@ class AjaxController extends Controller
     public function actionFileDelete()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
+
+        Yii::error('Dench');
 
         if (Yii::$app->request->isAjax) {
             if ($id = Yii::$app->request->post('key')) {
