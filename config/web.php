@@ -28,7 +28,8 @@ $config = [
                 '<action:(login|signup|logout)>' => 'admin/default/<action>',
                 'images/<size:(big|normal|small|slider)>/<id:\d+>.jpg' => 'image/photo', // /image/big/1.jpg
                 'property/<id:\d+>' => 'property/index',
-                'offer/<code:([a-z0-9]+?)>' => 'offer/index'
+                'offer/<code:([a-z0-9]+?)>' => 'offer/index',
+                'offer/<code:([a-z0-9]+?)>/<id:\d+>' => 'property/offer',
             ],
         ],
     ],

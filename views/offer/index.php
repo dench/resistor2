@@ -35,7 +35,7 @@ use yii\helpers\Url;
                     echo PropertyItem::widget([
                         'col' => 'col-sm-6 col-md-3',
                         'id' => $item->id,
-                        'url' => Url::toRoute(['property/index', 'id' => $item->id]),
+                        'url' => Url::toRoute(['property/offer', 'id' => $item->id, 'code' => $model->code]),
                         'cover' => ImageHelper::normal($item->image_ids[0]),
                         'name' => $item->name,
                         'region' => $item->region->name,

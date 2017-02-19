@@ -14,11 +14,24 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <?php Box::begin([
-    'footer' => Html::a(Yii::t('app', 'Create user'), ['create'], ['class' => 'btn btn-success'])
-]); ?>
+    'footer' => '
+<div class="row">
+    <div class="col-xs-8">' . Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) . '</div>
+    <div class="col-xs-4">
+        <div class="input-group">
+            ' . Html::dropDownList('checkbox', null, [
 
+        ], ['class' => 'form-control', 'prompt' => '']) . '
+            <span class="input-group-btn">
+            <button class="btn btn-primary" type="button">' . Yii::t('app', 'OK') . '</button>
+            </span>
+        </div>
+    </div>
+</div>
+',
+]); ?>
+<div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -26,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'attribute' => 'id',
-                'headerOptions' => ['width' => '70'],
+                'headerOptions' => ['width' => '60'],
                 'contentOptions' => ['class' => 'text-right'],
             ],
             'username',
@@ -38,9 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => User::statusList(),
             ],
             'created_at:date',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'headerOptions' => ['width' => '70'],
+            ],
         ],
     ]); ?>
-
+</div>
 <?php Box::end(); ?>

@@ -3,9 +3,10 @@
 namespace app\models;
 
 use app\behaviors\LanguageBehavior;
+use omgdef\multilingual\MultilingualQuery;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "near".
@@ -84,5 +85,13 @@ class Near extends ActiveRecord
             ->where(['lang_id' => Yii::$app->language])
             ->indexBy('near_id')
             ->column();
+    }
+
+    /**
+     * @return MultilingualQuery|ActiveQuery
+     */
+    public static function find()
+    {
+        return new MultilingualQuery(get_called_class());
     }
 }

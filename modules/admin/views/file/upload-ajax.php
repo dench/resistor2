@@ -18,7 +18,13 @@ use yii\widgets\ActiveForm;
 
         <?php $form = ActiveForm::begin() ?>
 
-        <?= $form->field($model, 'files[]')->widget(FileInput::className(), [
+        <?php
+
+        $fileInputName = 'files';
+
+        echo FileInput::widget([
+            'id' => $fileInputName,
+            'name' => $fileInputName.'[]',
             'options' => [
                 'multiple' => true,
             ],
@@ -38,7 +44,8 @@ use yii\widgets\ActiveForm;
             'pluginEvents' => [
                 'filebatchselected' => 'function(event, files) { $("#uploadfiles-files").fileinput("upload"); }',
             ],
-        ]); ?>
+        ]);
+        ?>
 
         <?php ActiveForm::end() ?>
 

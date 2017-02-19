@@ -73,6 +73,10 @@ class AjaxController extends Controller
                     'initialPreviewConfig' => $initialPreviewConfig,
                 ];
             }
+
+            return [
+                'error' => $model->errors['files'],
+            ];
         }
         return [
             'error' => 'Error!',

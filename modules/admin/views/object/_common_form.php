@@ -20,7 +20,7 @@ use yii\helpers\Url;
 MapAsset::register($this);
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Object */
+/* @var $model app\models\Object|app\models\Property */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $images app\models\Image */
 ?>
@@ -59,7 +59,11 @@ MapAsset::register($this);
                         <?= $form->field($model, 'stage_id')->dropDownList(Stage::getList(), ['prompt' => '']) ?>
                     </div>
                     <div class="col-xs-6 col-sm-4 col-md-6 col-lg-6">
-                        <?= $form->field($model, 'status_id')->dropDownList(ObjectStatus::getList()) ?>
+                        <?php
+                        if ($model->formName() == 'Object') {
+                            echo $form->field($model, 'status_id')->dropDownList(ObjectStatus::getList());
+                        }
+                        ?>
                     </div>
                 </div>
                 <?php Box::end(); ?>
@@ -186,6 +190,7 @@ MapAsset::register($this);
                 'initialPreviewConfig' => $initialPreviewConfig,
                 'fileActionSettings' => [
                     'showZoom' => false,
+                    'dragClass' => 'btn btn-xs btn-default',
                 ],
                 'previewFileType' => 'image',
                 'uploadUrl' => Url::to(['/ajax/file-upload']),
@@ -198,6 +203,7 @@ MapAsset::register($this);
                 'showBrowse' => true,
                 'showCaption' => false,
                 'showClose' => false,
+                'showPreview ' => false,
                 'dropZoneEnabled' => false,
                 'layoutTemplates' => [
                     'modalMain' => '',
@@ -208,15 +214,17 @@ MapAsset::register($this);
                 ],
                 'previewTemplates' => [
                     'generic' => '
-<div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
-    <div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">
-        {content}
+<div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 file-sortable">
+    <div class="file-preview-frame kv-preview-thumb file-drag-handle drag-handle-init" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">
+        <div class="kv-file-content">
+            {content}
+         </div>
         {footer}
     </div>
 </div>',
                     'image' => '
 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
-    <div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">
+    <div class="file-preview-frame kv-preview-thumb" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">
         <div class="kv-file-content">
             <img src="{data}" class="kv-preview-data file-preview-image" title="{caption}" alt="{caption}" width="100%">
         </div>

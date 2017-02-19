@@ -5,7 +5,7 @@ return [
     'supportEmail' => '',
 
 	'fileExtensions' => 'png, jpg, doc, txt',
-	'fileMaxSize' => 1*1024*1024,
+	'fileMaxSize' => 10*1024*1024,
 	'fileMaxFiles' => 50,
 	'filePath' => dirname(__DIR__) . '/files',
 

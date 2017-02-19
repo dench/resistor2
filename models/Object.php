@@ -91,7 +91,17 @@ class Object extends ActiveRecord
                 'relations' => [
                     'view_ids' => ['views'],
                     'near_ids' => ['nears'],
-                    'image_ids' => ['images'],
+                    'image_ids' => [
+                        'images',
+                        'updater' => [
+                            'viaTableAttributesValue' => [
+                                'position' => function($updater, $relatedPk, $rowCondition) {
+                                    $primaryModel = $updater->getBehavior()->owner;
+                                    return array_search($relatedPk, $primaryModel->image_ids);
+                                },
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -229,7 +239,9 @@ class Object extends ActiveRecord
     public function getImages()
     {
         return $this->hasMany(Image::className(), ['id' => 'image_id'])
-            ->viaTable($this->tableName() . '_image', [$this->tableName() . '_id' => 'id']);
+            ->viaTable($this->tableName() . '_image', [$this->tableName() . '_id' => 'id'])
+            ->leftJoin($this->tableName() . '_image', 'id=image_id')
+            ->orderBy([$this->tableName() . '_image.position' => SORT_ASC]);
     }
     
     public function getCountProperty()

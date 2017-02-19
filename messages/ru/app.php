@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'Requests' => 'Запросы',
+    'Title' => 'Заголовок',
+    'Keywords' => 'Ключевые слова',
+    'Cities' => 'Города',
+    'Information added successfully' => 'Информация успешно добавлена',
     'Information has been saved successfully' => 'Информация успешно сохранена',
     'Select property...' => 'Выберите недвижимость...',
     'Add' => 'Добавить',

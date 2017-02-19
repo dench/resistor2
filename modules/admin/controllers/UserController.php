@@ -71,7 +71,8 @@ class UserController extends Controller
             $model->setPassword($model->password);
             $model->generateAuthKey();
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Information added successfully'));
+                return $this->redirect(['index']);
             }
         }
 
@@ -95,7 +96,8 @@ class UserController extends Controller
                 $model->setPassword($model->password);
             }
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Information has been saved successfully'));
+                return $this->redirect(['index']);
             }
         }
 

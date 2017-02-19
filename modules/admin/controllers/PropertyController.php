@@ -123,6 +123,10 @@ class PropertyController extends Controller
             }
             $post['Property']['image_ids'] = $image_ids;
 
+            if (isset($post['Property']['status_id'])) {
+                unset($post['Property']['status_id']);
+            }
+
             $object->load($post, 'Property');
 
             if ($object->save()) {
@@ -131,7 +135,8 @@ class PropertyController extends Controller
 
             if ($model->validate()) {
                 $model->save(false);
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Information added successfully'));
+                return $this->redirect(['index']);
             }
         }
 
@@ -172,12 +177,17 @@ class PropertyController extends Controller
             }
             $post['Property']['image_ids'] = $image_ids;
 
+            if (isset($post['Property']['status_id'])) {
+                unset($post['Property']['status_id']);
+            }
+
             $object->load($post, 'Property');
 
             if ($model->validate() && $object->validate()) {
                 $model->save(false);
                 $object->save(false);
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Information has been saved successfully'));
+                return $this->redirect(['index']);
             }
         }
 

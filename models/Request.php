@@ -90,7 +90,8 @@ class Request extends ActiveRecord
             'region' => Yii::t('app', 'Region'),
             'text' => Yii::t('app', 'Text'),
             'status_id' => Yii::t('app', 'Status'),
-            'type_ids' => Yii::t('app', 'Property type')
+            'created_at' => Yii::t('app', 'Created'),
+            'type_ids' => Yii::t('app', 'Property type'),
         ];
     }
 

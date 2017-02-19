@@ -3,7 +3,9 @@
 namespace app\models;
 
 use app\behaviors\LanguageBehavior;
+use omgdef\multilingual\MultilingualQuery;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
@@ -96,5 +98,13 @@ class Location extends ActiveRecord
         }
 
         return self::$_list[$region_id];
+    }
+
+    /**
+     * @return MultilingualQuery|ActiveQuery
+     */
+    public static function find()
+    {
+        return new MultilingualQuery(get_called_class());
     }
 }

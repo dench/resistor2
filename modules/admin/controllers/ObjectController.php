@@ -68,7 +68,8 @@ class ObjectController extends Controller
         $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Information added successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -88,7 +89,8 @@ class ObjectController extends Controller
         $model = $this->findModelMulti($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Information has been saved successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -114,7 +116,7 @@ class ObjectController extends Controller
      * Finds the Object model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Object the loaded model
+     * @return Object|\yii\db\ActiveRecord
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

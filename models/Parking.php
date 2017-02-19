@@ -4,7 +4,9 @@ namespace app\models;
 
 use app\behaviors\LanguageBehavior;
 use app\behaviors\PositionBehavior;
+use omgdef\multilingual\MultilingualQuery;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -83,5 +85,13 @@ class Parking extends \yii\db\ActiveRecord
     public static function getList()
     {
         return ArrayHelper::map(self::find()->orderBy('position')->all(), 'id', 'name');
+    }
+
+    /**
+     * @return MultilingualQuery|ActiveQuery
+     */
+    public static function find()
+    {
+        return new MultilingualQuery(get_called_class());
     }
 }

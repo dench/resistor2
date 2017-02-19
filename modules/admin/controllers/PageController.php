@@ -68,7 +68,8 @@ class PageController extends Controller
         $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Information added successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -87,7 +88,8 @@ class PageController extends Controller
         $model = $this->findModelMulti($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Information has been saved successfully'));
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
