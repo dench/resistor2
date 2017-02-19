@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use app\behaviors\LanguageBehavior;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -36,13 +36,15 @@ class PropertySearch extends Property
             [[
                 'id', 'object_id', 'region_id', 'location_id', 'type_id', 'parking_id', 'stage_id', 'bathroom', 'bedroom',
                 'solarpanel', 'sauna', 'furniture', 'conditioner', 'heating', 'pantry', 'tennis',
-                /*'year_from', 'year_to',
+
+                'year_from', 'year_to',
                 'covered_from', 'covered_to',
                 'uncovered_from', 'uncovered_to',
                 'plot_from', 'plot_to',
                 'bathroom_from', 'bathroom_to',
                 'bedroom_from', 'bedroom_to',
-                'price_from', 'price_to',*/
+                'price_from', 'price_to',
+
                 'status_id', 'sold_id', 'created_at', 'updated_at', 'top', 'titul'
             ], 'integer'],
             [[
@@ -50,6 +52,18 @@ class PropertySearch extends Property
             ], 'safe'],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    /*public function behaviors()
+    {
+        $parent = parent::behaviors();
+
+        unset($parent[LanguageBehavior::className()]);
+
+        return $parent;
+    }*/
 
     /**
      * @inheritdoc

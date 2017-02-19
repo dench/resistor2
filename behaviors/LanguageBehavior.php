@@ -46,12 +46,12 @@ class LanguageBehavior extends MultilingualBehavior
             foreach ($rules as $rule) {
                 if (is_array($rule)) {
                     foreach ($rule as $r) {
-                        if (!strpos($r, '_ids')) {
+                        if (!strpos($r, '_ids') && !strpos($r, '_from') && !strpos($r, '_to')) {
                             $attributes[$r] = $r;
                         }
                     }
                 } else {
-                    if (!strpos($rule, '_ids')) {
+                    if (!strpos($rule, '_ids') && !strpos($rule, '_from') && !strpos($rule, '_to')) {
                         $attributes[$rule] = $rule;
                     }
                 }

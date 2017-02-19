@@ -122,8 +122,8 @@ Yii::$app->view->registerJs($script, yii\web\View::POS_READY);
                     'val_min' => $model->price_from ? $model->price_from : Property::priceMin(),
                     'val_max' => $model->price_to ? $model->price_to : Property::priceMax(),
                 ]) ?>
-                <?= Html::hiddenInput('SaleSearch[price_from]', $model->price_from, ['id' => 'price_from']) ?>
-                <?= Html::hiddenInput('SaleSearch[price_to]', $model->price_to, ['id' => 'price_to']) ?>
+                <?= Html::hiddenInput('PropertySearch[price_from]', $model->price_from, ['id' => 'price_from']) ?>
+                <?= Html::hiddenInput('PropertySearch[price_to]', $model->price_to, ['id' => 'price_to']) ?>
             </div>
         </div>
     </div>
